@@ -1,32 +1,17 @@
-import { List, Avatar } from 'antd';
-import React from 'react';
+import { List, Avatar, Button } from "antd";
+import React from "react";
 
-export default function InvestorList() {
-    const data = [
-        {
-          title: 'Ant Design Title 1',
-        },
-        {
-          title: 'Ant Design Title 2',
-        },
-        {
-          title: 'Ant Design Title 3',
-        },
-        {
-          title: 'Ant Design Title 4',
-        },
-      ];
-    return( <List
-        itemLayout="horizontal"
-        dataSource={data}
-        renderItem={item => (
-          <List.Item>
-            <List.Item.Meta
-              avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-              title={<a href="https://ant.design">{item.title}</a>}
-              description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-            />
-          </List.Item>
-        )}
-      />);
+export default function InvestorList({...props}) {
+  console.log(props);
+  return (
+        <List.Item>
+          <List.Item.Meta
+            avatar={
+              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+            }
+            title={<a href="https://sarkari-naukri-jobs.in/"></a>}
+            description="Flipkart, AJIO, Amazon, Tata Motors, Cred, Paytm, PhonePay, JioMoney, Gainsight, Vista"
+          />
+        </List.Item>
+  )
 }
