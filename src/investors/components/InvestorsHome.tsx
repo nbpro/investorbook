@@ -41,9 +41,8 @@ export default function InvestorsHome() {
     <div>
       <AddInvestorBox>
         <InvestorTitle>Investors</InvestorTitle>
-        <Button type="primary">Add Investor</Button>
+        <Button type="primary" onClick={addInvestorClick}>Add Investor</Button>
       </AddInvestorBox>
-      {investorsStore.state.investors.length}
       {investorsStore.state.investors.length ? (
         investorsStore.state.investors.map((investor: Investor) => {
           {investor.id}
@@ -52,7 +51,8 @@ export default function InvestorsHome() {
           </List>
         })
       ) : (
-        <Button type="primary" onClick={addInvestorClick}>Add Investor</Button>
+        // <Button type="primary" onClick={addInvestorClick}>Add Investor</Button>
+        null
       )}
        { showAddInvestor ? <AddInvestor/> : null }
     </div>

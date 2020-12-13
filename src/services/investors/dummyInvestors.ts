@@ -29,3 +29,27 @@ export const investors = [
     companies: ["Flipkart", "AJIO", "Tata Motors", "Cred"],
   }
 ];
+
+
+export const investmentsDummyData = [
+    {
+      key: "1",
+      name: "John Brown",
+      amount: 32,
+      status: ["nice", "developer"],
+    },
+    {
+      key: "2",
+      name: "Jim Green",
+      age: 42,
+      address: "London No. 1 Lake Park",
+      tags: ["loser"],
+    },
+    {
+      key: "3",
+      name: "Joe Black",
+      age: 32,
+      address: "Sidney No. 1 Lake Park",
+      tags: ["cool", "teacher"],
+    }
+]
