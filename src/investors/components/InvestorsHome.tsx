@@ -5,6 +5,7 @@ import { Context as InvestorsContext } from "../store";
 import { loadAllInvestors } from "../actions/index";
 import { List, Avatar, Button } from "antd";
 import { Investor } from "../../types";
+import AddInvestor from './AddInvestors';
 
 export const InvestorTitle = styled.div`
   width: 116px;
@@ -26,9 +27,15 @@ export const AddInvestorBox = styled.div`
 
 export default function InvestorsHome() {
   const investorsStore = useContext(InvestorsContext);
+  const [showAddInvestor, setShowAddinvestor] = useState(false);
+
   useEffect(() => {
     loadAllInvestors(investorsStore);
   },[]);
+
+  function addInvestorClick(event: React.MouseEvent){
+    setShowAddinvestor(true);
+  }
 
   return (
     <div>
@@ -45,8 +52,9 @@ export default function InvestorsHome() {
           </List>
         })
       ) : (
-        <Button type="primary">Add Investor</Button>
+        <Button type="primary" onClick={addInvestorClick}>Add Investor</Button>
       )}
+       { showAddInvestor ? <AddInvestor/> : null }
     </div>
   );
 }
