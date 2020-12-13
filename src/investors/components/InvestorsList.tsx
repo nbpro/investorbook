@@ -1,17 +1,27 @@
-import { List, Avatar, Button } from "antd";
+import { List, Avatar, Button, Divider } from "antd";
 import React from "react";
+import styled from "styled-components";
 
-export default function InvestorList({...props}) {
+export const ListItem = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export default function InvestorList({ ...props }) {
   console.log(props);
   return (
-        <List.Item>
-          <List.Item.Meta
-            avatar={
-              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-            }
-            title={<a href="https://sarkari-naukri-jobs.in/"></a>}
-            description="Flipkart, AJIO, Amazon, Tata Motors, Cred, Paytm, PhonePay, JioMoney, Gainsight, Vista"
-          />
-        </List.Item>
-  )
+    <>
+      <Divider></Divider>
+      <ListItem>
+          <Avatar src={props.imageUrl} />
+      </ListItem>
+      <List.Item>
+        <List.Item.Meta
+          avatar={<Avatar src={props.imageUrl} />}
+          title={<a href="https://sarkari-naukri-jobs.in/"></a>}
+          description={props?.companies && props.companies.toString()}
+        />
+      </List.Item>
+    </>
+  );
 }

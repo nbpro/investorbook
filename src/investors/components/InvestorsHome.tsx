@@ -5,7 +5,7 @@ import { Context as InvestorsContext } from "../store";
 import { loadAllInvestors } from "../actions/index";
 import { List, Avatar, Button } from "antd";
 import { Investor } from "../../types";
-import AddInvestor from './AddInvestors';
+import AddInvestor from "./AddInvestors";
 
 export const InvestorTitle = styled.div`
   width: 116px;
@@ -28,12 +28,13 @@ export const AddInvestorBox = styled.div`
 export default function InvestorsHome() {
   const investorsStore = useContext(InvestorsContext);
   const [showAddInvestor, setShowAddinvestor] = useState(false);
+  const [loadInvestorList, setShowInvestorList] = useState(false);
 
   useEffect(() => {
     loadAllInvestors(investorsStore);
-  },[]);
+  }, []);
 
-  function addInvestorClick(event: React.MouseEvent){
+  function addInvestorClick(event: React.MouseEvent) {
     setShowAddinvestor(true);
   }
 
@@ -41,20 +42,20 @@ export default function InvestorsHome() {
     <div>
       <AddInvestorBox>
         <InvestorTitle>Investors</InvestorTitle>
-        <Button type="primary" onClick={addInvestorClick}>Add Investor</Button>
+        <Button type="primary" onClick={addInvestorClick}>
+          Add Investor
+        </Button>
       </AddInvestorBox>
-      {investorsStore.state.investors.length ? (
-        investorsStore.state.investors.map((investor: Investor) => {
-          {investor.id}
-          <List itemLayout="horizontal">
-              <InvestorList key={investor.id} {...investor} />;
-          </List>
-        })
-      ) : (
-        // <Button type="primary" onClick={addInvestorClick}>Add Investor</Button>
-        null
-      )}
-       { showAddInvestor ? <AddInvestor/> : null }
+      {investorsStore.state.investors.length ? investorsStore.state.investors.map((investor: Investor) => {
+            return (
+              <List itemLayout="horizontal">
+                <InvestorList key={investor.id} {...investor} />
+              </List>
+            );
+          })
+        : // <Button type="primary" onClick={addInvestorClick}>Add Investor</Button>
+          null}
+      {showAddInvestor ? <AddInvestor /> : null}
     </div>
   );
 }
